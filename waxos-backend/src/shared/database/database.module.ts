@@ -14,7 +14,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
                     rejectUnauthorized: false, // Required for NeonDB
                 },
                 entities: [__dirname + '/../../**/*.entity{.ts,.js}'],
-                synchronize: configService.get('NODE_ENV') === 'development', // Auto-sync in dev only
+                synchronize: false, // Use migrations instead
                 logging: configService.get('NODE_ENV') === 'development',
                 maxQueryExecutionTime: 1000, // Log slow queries (>1s)
                 poolSize: configService.get<number>('DATABASE_MAX_CONNECTIONS', 20),

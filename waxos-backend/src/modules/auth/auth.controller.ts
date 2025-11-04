@@ -50,7 +50,7 @@ export class AuthController {
     @UseGuards(JwtAuthGuard)
     @Post('logout')
     @HttpCode(HttpStatus.OK)
-    async logout(@CurrentUser('id') userId: string) {
+    async logout(@CurrentUser('sub') userId: string) {
         const result = await this.authService.logout(userId);
         return {
             success: true,
@@ -60,7 +60,7 @@ export class AuthController {
 
     @UseGuards(JwtAuthGuard)
     @Get('me')
-    async getProfile(@CurrentUser('id') userId: string) {
+    async getProfile(@CurrentUser('sub') userId: string) {
         const result = await this.authService.getProfile(userId);
         return {
             success: true,

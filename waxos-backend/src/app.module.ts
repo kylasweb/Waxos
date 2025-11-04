@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { validationSchema } from './shared/config/validation.schema';
 import { DatabaseModule } from './shared/database/database.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { UserModule } from './modules/user/user.module';
+import { WorkspaceModule } from './modules/workspace/workspace.module';
 import { JwtAuthGuard } from './shared/guards/jwt-auth.guard';
 import { RolesGuard } from './shared/guards/roles.guard';
 
@@ -25,8 +27,10 @@ import { RolesGuard } from './shared/guards/roles.guard';
     // Database module (TypeORM + NeonDB)
     DatabaseModule,
     
-    // Authentication module
+    // Feature modules
     AuthModule,
+    UserModule,
+    WorkspaceModule,
   ],
   controllers: [AppController],
   providers: [
