@@ -5,9 +5,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { validationSchema } from './shared/config/validation.schema';
 import { DatabaseModule } from './shared/database/database.module';
+import { PusherModule } from './shared/services/pusher/pusher.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 import { WorkspaceModule } from './modules/workspace/workspace.module';
+import { PusherTestController } from './modules/pusher-test.controller';
 import { JwtAuthGuard } from './shared/guards/jwt-auth.guard';
 import { RolesGuard } from './shared/guards/roles.guard';
 
@@ -26,13 +28,16 @@ import { RolesGuard } from './shared/guards/roles.guard';
 
     // Database module (TypeORM + NeonDB)
     DatabaseModule,
+
+    // Pusher module (Real-time messaging)
+    PusherModule,
     
     // Feature modules
     AuthModule,
     UserModule,
     WorkspaceModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, PusherTestController],
   providers: [
     AppService,
     // Global JWT authentication guard
